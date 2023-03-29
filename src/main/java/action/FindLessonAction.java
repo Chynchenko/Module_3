@@ -1,21 +1,23 @@
 package action;
+import DTO.AverageMarkAndStudentCountDTO;
+
 import java.time.LocalDateTime;
 import java.util.List;
 
-public class FindSubjectAction implements Action {
+public class FindLessonAction implements Action {
     @Override
     public void execute() {
-        logger.info("FindSubjectAction was called. Time: " + LocalDateTime.now());
-        List<StringDoubleDTO> subjectsWithMarks = service.findSubjectWithAverageMark();
-        if (subjectsWithMarks.size() != 0) {
-            System.out.println("Subject with the lowest average mark: "
-                    + subjectsWithMarks.get(0).getName() + ", mark: "
-                    + subjectsWithMarks.get(0).getValue());
-            System.out.println("Subject with the highest average mark: "
-                    + subjectsWithMarks.get(1).getName() + ", mark: "
-                    + subjectsWithMarks.get(1).getValue());
+        logger.info("FindLessonAction was called. Time: " + LocalDateTime.now());
+        List<AverageMarkAndStudentCountDTO> lessonsWithMarks = service.findLessonWithAverageMark();
+        if (lessonsWithMarks.size() != 0) {
+            System.out.println("Lesson with the lowest average mark: "
+                    + lessonsWithMarks.get(0).getName() + ", mark: "
+                    + lessonsWithMarks.get(0).getValue());
+            System.out.println("Lesson with the highest average mark: "
+                    + lessonsWithMarks.get(1).getName() + ", mark: "
+                    + lessonsWithMarks.get(1).getValue());
         } else {
-            System.out.println("There are no subjects with marks");
+            System.out.println("There are no lessons with marks");
         }
     }
 }
